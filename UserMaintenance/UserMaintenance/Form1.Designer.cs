@@ -34,6 +34,7 @@ namespace UserMaintenance
             this.lblFirstName = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.WritetoFile = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox1
@@ -78,11 +79,22 @@ namespace UserMaintenance
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // WritetoFile
+            // 
+            this.WritetoFile.Location = new System.Drawing.Point(282, 176);
+            this.WritetoFile.Name = "WritetoFile";
+            this.WritetoFile.Size = new System.Drawing.Size(143, 23);
+            this.WritetoFile.TabIndex = 6;
+            this.WritetoFile.Text = "button2";
+            this.WritetoFile.UseVisualStyleBackColor = true;
+            this.WritetoFile.Click += new System.EventHandler(this.button2_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.WritetoFile);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.lblFirstName);
@@ -102,6 +114,7 @@ namespace UserMaintenance
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label lblFirstName;
+        private System.Windows.Forms.Button WritetoFile;
     }
 }
 
