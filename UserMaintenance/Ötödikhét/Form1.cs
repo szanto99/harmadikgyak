@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ötödikhét.Entities;
 using Ötödikhét.MnbServiceReference;
 
 namespace Ötödikhét
@@ -17,6 +18,9 @@ namespace Ötödikhét
         {
             InitializeComponent();
             ApiCall();
+            BindingList<RateData> Rates = new BindingList<RateData>();
+            dataGridView1.DataSource = Rates;
+
         }
 
         private void ApiCall()
@@ -34,6 +38,11 @@ namespace Ötödikhét
         private void Form1_Load(object sender, EventArgs e)
         {
             
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
