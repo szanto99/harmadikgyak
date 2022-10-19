@@ -17,13 +17,24 @@ namespace Ötödikhét
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        BindingList<string> Currencies = new BindingList<string>();
         public Form1()
         {
             InitializeComponent();
+            Api_GetCurrencies();
+            //Currencies = Api_GetCurrencies();
+            comboBox1.DataSource = Currencies;
+            RefreshData();
+
+        }
+
+
+        private void RefreshData()
+        {
+            Rates.Clear();
             dataGridView1.DataSource = Rates;
             XmlRead();
             Diagram();
-
         }
 
         private void Diagram()
@@ -46,9 +57,11 @@ namespace Ötödikhét
 
         private void XmlRead()
         {
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(ApiCall());
-            foreach (XmlElement element in xml.DocumentElement)
+            XmlDocument exchange_xml = new XmlDocument();
+
+            exchange_xml.LoadXml(Api_GetExchangeRates());
+
+            foreach (XmlElement element in exchange_xml.DocumentElement)
             {
                 var rate = new RateData();
                 Rates.Add(rate);
@@ -63,29 +76,68 @@ namespace Ötödikhét
                 if (unit != 0)
                     rate.Value = value / unit;
             }
+
+            /*XmlDocument currency_xml = new XmlDocument();
+
+            currency_xml.LoadXml(Api_GetCurrencies());
+
+            foreach (XmlElement element in currency_xml.DocumentElement)
+            {
+
+                var currency = new ();
+                Currencies.Add(currency);
+            }*/
+
         }
 
-        private string ApiCall()
+        private string Api_GetExchangeRates()
         {
             MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
             var request = new GetExchangeRatesRequestBody();
-            request.currencyNames = "EUR";
-            request.startDate = "2020-01-01";
-            request.endDate = "2020-06-30";
+
+            request.currencyNames = "EUR"; //comboBox1.SelectedItem.ToString();
+            request.startDate = "2020-01-01"; //dateTimePicker1.ToString();
+            request.endDate = "2020-06-30";//dateTimePicker2.ToString();
 
             var response = mnbService.GetExchangeRates(request);
             var result = response.GetExchangeRatesResult;
             return result;
         }
 
+        private string Api_GetCurrencies()
+        {
+            MNBArfolyamServiceSoapClient mnbService = new MNBArfolyamServiceSoapClient();
+            var request = new GetCurrenciesRequestBody();
+
+            var response = mnbService.GetCurrencies(request);
+            var result = response.GetCurrenciesResult;
+
+            return result;
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshData();
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RefreshData();
         }
     }
 }
