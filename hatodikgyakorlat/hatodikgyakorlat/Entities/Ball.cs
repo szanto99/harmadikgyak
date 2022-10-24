@@ -21,7 +21,7 @@ namespace hatodikgyakorlat.Entities
 
         protected void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height); //nem volt meg
         }
 
         private void Ball_Paint(object sender, PaintEventArgs e)
