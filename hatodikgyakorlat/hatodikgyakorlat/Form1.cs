@@ -47,6 +47,7 @@ namespace hatodikgyakorlat
             button1.Text = Resource1.BallButton;
             button3.Text = Resource1.CarButton;
             label1.Text = Resource1.Cmg;
+            button2.BackColor = Color.Goldenrod;
 
         }
 
@@ -89,6 +90,17 @@ namespace hatodikgyakorlat
         private void button3_Click(object sender, EventArgs e)
         {
             Factory = new CarFactory();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPick = new ColorDialog(); //példányosíts egy ColorDialog-ot is.
+            colorPick.Color = button.BackColor;
+            if (colorPick.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPick.Color;
+
         }
     }
 }
