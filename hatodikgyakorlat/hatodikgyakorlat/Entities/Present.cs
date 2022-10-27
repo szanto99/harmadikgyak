@@ -15,6 +15,7 @@ namespace hatodikgyakorlat.Entities
 
         protected override void DrawImage(Graphics g)
         {
+         
             
         }
     }
