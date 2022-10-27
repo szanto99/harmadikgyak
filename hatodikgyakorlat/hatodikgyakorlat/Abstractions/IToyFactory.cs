@@ -8,7 +8,7 @@ namespace hatodikgyakorlat.Abstractions
 {
     public interface IToyFactory
     {
-        Toy CrateNew();
+        Toy CreateNew();
         
     }
 }

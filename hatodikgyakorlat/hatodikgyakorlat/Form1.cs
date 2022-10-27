@@ -37,7 +37,7 @@ namespace hatodikgyakorlat
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var ball = Factory.CreateBall(); //nem volt meg
+            var ball = Factory.CreateNew(); //nem volt meg
             _balls.Add(ball);
             ball.Left = ball.Width * -1;
             mainPanel.Controls.Add(ball); //nem volt meg
