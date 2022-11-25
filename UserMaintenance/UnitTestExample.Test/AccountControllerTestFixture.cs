@@ -9,6 +9,6 @@ namespace UnitTestExample.Test
     internal class AccountControllerTestFixture
     {
 
-
+        //public int MyProperty { get; set; }
     }
 }
