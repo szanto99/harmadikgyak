@@ -24,7 +24,10 @@ namespace KilencedikGyak
         public Form1()
         {
             InitializeComponent();
-            Population=  GetPop(@"C:\Temp\nép.csv");
+            label1.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+            label2.Font = new Font(Label.DefaultFont, FontStyle.Bold);
+            listBox1.DataSource = File.ReadAllLines("C:/Temp/Years.txt");
+            Population =  GetPop(@"C:\Temp\nép.csv");
             BirthProbabilities = GetBirth(@"C:\Temp\születés.csv");
             DeathProbabilities = GetDeath(@"C:\Temp\halál.csv");
 
@@ -33,7 +36,7 @@ namespace KilencedikGyak
                 // Végigmegyünk az összes személyen
                 for (int i = 0; i < Population.Count; i++)
                 {
-                    // Ide jön a szimulációs lépés
+                    //SimStep();
                 }
 
                 int nbrOfMales = (from x in Population
@@ -148,6 +151,16 @@ namespace KilencedikGyak
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }
