@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace KilencedikGyak.Entities
 {
-    public class Person
+    public class BirthProbability
     {
+        public int Age { get; set; }
         public int BirthYear { get; set; }
-        public Gender Gender { get; set; }
         public int NbrOfChildren { get; set; }
-        public bool IsAlive { get; set; }
+        public double Probability { get; set; }
 
-        public Person()
-        {
-            IsAlive = true;
-        }
     }
 }
